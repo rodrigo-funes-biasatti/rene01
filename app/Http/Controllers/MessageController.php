@@ -45,6 +45,7 @@ class MessageController extends Controller
         $mensaje->email = $request->input('email');
         $mensaje->telefono = $request->input('telefono');
         $mensaje->mensaje = $request->input('consulta');
+        $mensaje->viewed = 0;
 
         //dd($mensaje);
 
@@ -77,7 +78,9 @@ class MessageController extends Controller
         $mensaje->viewed = 1;
         $mensaje->update();
 
-        dd($mensaje);
+        //dd($mensaje);
+
+        return redirect()->route('mensajes');
     }
 
     /**
@@ -100,6 +103,10 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //dd($id);
+        $mensaje = Mensaje::findOrFail($id);
+        $mensaje->delete();
+
+        return redirect()->route('mensajes');
     }
 }
