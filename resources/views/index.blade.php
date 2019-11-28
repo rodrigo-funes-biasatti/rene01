@@ -177,7 +177,9 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <div class="d-flex justify-content-end">
                                         <button class="btn btn-success" type="submit">Enviar</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -190,14 +192,14 @@
             <hr>
         </div>
         
-        <!-- Galería -->
+        
         <div class="container pt-1 pb-3" id="galeria">
             <div class="row text-center mt-3">
                 <div class="col-12">
                     <h3 class="titulo"><strong>Galería de fotos</strong></h3>
                 </div>
             </div>
-
+        <!-- Galería -->
         <div class="row">
             <div class="col-12 col-md-4 mt-2">
                 <div class="card shadow">
@@ -306,9 +308,13 @@
                         </div>
                     </div>
                 </div>
+
+                @auth
+                <div class="col-12 col-md-4 mt-2 d-flex justify-content-center align-items-center">
+                    <form action="" method="POST"><button type="submit" class=" btn btn-info" data-toggle="tooltip" data-placement="left" title="Nueva foto"><i class="fas fa-plus"></i></button></form>
+                </div>
+                @endauth
             </div>      
         </div>
-
-
     </div>
 @endsection
