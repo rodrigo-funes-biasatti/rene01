@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mensaje;
+use Carbon\Carbon;
 
 class MessageController extends Controller
 {
@@ -15,6 +16,11 @@ class MessageController extends Controller
     public function index()
     {  
         $mensajes = Mensaje::orderBy('viewed', 'ASC')->orderBy("created_at", "DESC")->paginate(10);
+
+        foreach($mensajes as $mens){
+            $date = Carbon::createFromFormat('Y-m-d H:i:s', $mens->created_at)->format('d-m-y H:i:s');
+            $mens->create_at = $date;
+        }
 
 
         return view('mensajes', compact('mensajes'));

@@ -19,7 +19,7 @@
                         
                         @foreach ($mensajes as $mens)
                         <tr>
-                            <th scope="row">{{$mens->created_at}}</th>
+                            <th scope="row">{{$mens->create_at}}</th>
                                 <td>{{$mens->nombre_apellido}}</td>
                                 <td>{{$mens->email}}</td>
                                 <td>{{$mens->telefono}}</td>
