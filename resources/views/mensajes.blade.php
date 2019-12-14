@@ -27,7 +27,7 @@
                                 <td>{{$mens->nombre_apellido}}</td>
                                 <td>{{$mens->email}}</td>
                                 <td>{{$mens->telefono}}</td>
-                                <td>{{$mens->mensaje}}</td> 
+                                <td class="font-weight-bold">{{$mens->mensaje}}</td> 
                                 <th scope="col">
                                     <div class="row">
                                         <div class="col-5">

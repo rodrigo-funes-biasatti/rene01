@@ -25,6 +25,7 @@
             </button>
         </div>
     </div>
+
     @enderror
 
     @error('password')
@@ -195,10 +196,10 @@
         <!-- Contacto -->
         <div class="container" id="contacto">
             <div class="row align-items-center">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-8">
                     <h2 class="titulo-consu">Contacto</h2>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-4">
                     <div class="card accent-success border-success">
                         <div class="card-header text-center bg-success">
                              <p><img src="{{url('img/Presentacion/pres.jpg')}}" alt="card image" class="img-fluid rounded-circle" style="height:50%; width:50%;"></p>
@@ -352,7 +353,28 @@
 
                 @auth
                 <div class="col-12 col-md-4 mt-2 d-flex justify-content-center align-items-center">
-                    <form action="" method="POST"><button type="submit" class=" btn btn-info" data-toggle="tooltip" data-placement="left" title="Nueva foto"><i class="fas fa-plus"></i></button></form>
+                    <a href="" data-toggle="modal" data-target="#modal-newfoto" class="btn btn-info"><i class="fas fa-plus"></i></a>
+                    <div class="container fondo-principal">
+                        <div class="modal fade" id="modal-newfoto" role="dialog" tabindex="-1">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Nueva Foto</h5>
+                                    <button class="close" data-dismiss="modal" aria-label="cerrar"><span aria-hidden="true">&times;</span></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row justify-content-center">
+                                            <form action="" method="POST">
+                                                @csrf
+                                                <input type="file" name="foto" id="foto">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 @endauth
             </div>      
