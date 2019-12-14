@@ -2,6 +2,10 @@
 
 @section('content')
     
+    <div class="row justify-content-center pb-2">
+        <h2>Mensajes</h2>
+    </div>
+
     <div class="row">
         <div class="col-6 col-sm-12">
             <table class="table">

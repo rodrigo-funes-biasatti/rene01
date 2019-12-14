@@ -192,6 +192,47 @@
             <hr>
         </div>
         
+        <!-- Contacto -->
+        <div class="container" id="contacto">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <h2 class="titulo-consu">Contacto</h2>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card accent-success border-success">
+                        <div class="card-header text-center bg-success">
+                             <p><img src="{{url('img/Presentacion/pres.jpg')}}" alt="card image" class="img-fluid rounded-circle" style="height:50%; width:50%;"></p>
+                        </div>
+                        <div class="card-body text-center">
+                        
+                        <h4 class="card-title">Rodrigo Funes Biasatti</h4>
+                        <p class="card-text">Desarrollador</p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="" class="social-icon text xs center">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="" class="social-icon text xs center">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="" class="social-icon text xs center">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <hr>
+        </div>
         
         <div class="container pt-1 pb-3" id="galeria">
             <div class="row text-center mt-3">

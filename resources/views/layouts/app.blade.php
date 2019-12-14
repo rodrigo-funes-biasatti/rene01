@@ -118,6 +118,7 @@
     </head>
 <body>
     <div class="fondo-cabecera justify-content-center">
+        @if (\Request::is('mensajes'))
         <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-dark navegacion">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
@@ -125,9 +126,6 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbar">
                     <a href="{{route('home')}}" class="nav-link">Inicio </a>
-                        <a href="#actividades" class="nav-link">Actividades</a>
-                        <a href="#galeria" class="nav-link">Galería</a>
-                        <a href="" class="nav-link">Contacto</a>
                         @guest
                         <a href="" class="nav-link ml-auto" data-toggle="modal" data-target="#modal-administracion">Administración</a>
                         @else
@@ -143,6 +141,33 @@
                     </div>
                 </nav>
             </div>
+        @else
+        <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark navegacion">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                        <span class="navbar-toggler-icon icono-menu-s"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbar">
+                    <a href="{{route('home')}}" class="nav-link">Inicio </a>
+                        <a href="#actividades" class="nav-link">Actividades</a>
+                        <a href="#galeria" class="nav-link">Galería</a>
+                        <a href="#contacto" class="nav-link">Contacto</a>
+                        @guest
+                        <a href="" class="nav-link ml-auto" data-toggle="modal" data-target="#modal-administracion">Administración</a>
+                        @else
+                        <a href="{{route('mensajes')}}" class="nav-link" style="color: yellow;">Mensajes</a>
+                        <a class="nav-link ml-auto" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                         {{Auth::user()->name}}: Logout
+                     </a>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        @endguest
+                    </div>
+                </nav>
+            </div>
+            @endif
     <div class="container">       
         <div class="row text-center texto-principal">
             <div class="col-12 col-sm-12 mt-5 mb-2">
