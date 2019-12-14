@@ -70,6 +70,15 @@
                 background-color: gainsboro !important;
             }
 
+            .modal-newfoto{
+                background-color: gainsboro !important;
+            }
+
+            .input-foto{
+                background-color: gainsboro !important;
+                border:none;
+            }
+
             .pie-pagina{
                 background-color: darkslategrey;
                 color: #FFF;

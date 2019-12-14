@@ -353,10 +353,11 @@
 
                 @auth
                 <div class="col-12 col-md-4 mt-2 d-flex justify-content-center align-items-center">
-                    <a href="" data-toggle="modal" data-target="#modal-newfoto" class="btn btn-info"><i class="fas fa-plus"></i></a>
-                    <div class="container fondo-principal">
+                    <p><a href="" data-toggle="modal" data-target="#modal-newfoto" class="btn btn-info"><i class="fas fa-plus"></i></a></p>
                         <div class="modal fade" id="modal-newfoto" role="dialog" tabindex="-1">
                             <div class="modal-dialog modal-md">
+                                <div class="modal-content modal-newfoto">
+
                                 <div class="modal-header">
                                     <h5 class="modal-title">Nueva Foto</h5>
                                     <button class="close" data-dismiss="modal" aria-label="cerrar"><span aria-hidden="true">&times;</span></button>
@@ -367,7 +368,22 @@
                                         <div class="row justify-content-center">
                                             <form action="" method="POST">
                                                 @csrf
-                                                <input type="file" name="foto" id="foto">
+                                                {!! @method_field("POST")!!}
+                                                <div class="form-group">
+                                                    <label for="foto">Foto</label>
+                                                    <input class="form-control input-foto" type="file" name="foto" id="foto">
+                                                </div>
+                                            
+                                                <div class="form-group">
+                                                    <label for="descripcion">Descripción</label>
+                                                    <input class="form-control" type="text" id="descripcion" name="descripcion">
+                                                </div>
+
+                                                <div class="d-flex justify-content-end">
+                                                    <button class="btn btn-success text-right" type="submit">Subir</button>
+                                                </div>
+
+                                                
                                             </form>
                                         </div>
                                     </div>
