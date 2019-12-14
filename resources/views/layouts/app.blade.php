@@ -149,9 +149,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbar">
                     <a href="{{route('home')}}" class="nav-link">Inicio </a>
-                        <a href="#actividades" class="nav-link">Actividades</a>
-                        <a href="#galeria" class="nav-link">Galería</a>
+                        <a href="#actividades" class="nav-link">Actividades</a>                     
                         <a href="#contacto" class="nav-link">Contacto</a>
+                        <a href="#galeria" class="nav-link">Galería</a>
                         @guest
                         <a href="" class="nav-link ml-auto" data-toggle="modal" data-target="#modal-administracion">Administración</a>
                         @else
