@@ -197,7 +197,7 @@
         <div class="container" id="contacto">
             <div class="row align-items-center">
                 <div class="col-12 col-md-8">
-                    <h2 class="titulo-consu">Contacto</h2>
+                    <h2 class="titulo-consu titulo"><strong>Contacto</strong></h2>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="card accent-success border-success">
@@ -366,7 +366,7 @@
                                 <div class="modal-body">
                                     <div class="container-fluid">
                                         <div class="row justify-content-center">
-                                            <form action="" method="POST">
+                                        <form action="{{route('nueva-foto')}}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 {!! @method_field("POST")!!}
                                                 <div class="form-group">
@@ -382,7 +382,6 @@
                                                 <div class="d-flex justify-content-end">
                                                     <button class="btn btn-success text-right" type="submit">Subir</button>
                                                 </div>
-
                                                 
                                             </form>
                                         </div>

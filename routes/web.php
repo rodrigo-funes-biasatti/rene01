@@ -24,5 +24,8 @@ Route::get('mensajes', 'MessageController@index')->name('mensajes')->middleware(
 Route::post('mensajes/{id}', 'MessageController@edit')->name('set_viewed');
 Route::post('mensajes-del/{id}', 'MessageController@destroy')->name('delete_message');
 
+//Foto
+Route::post('nueva_foto', 'FotoController@create')->name('nueva-foto');
+
     
 
