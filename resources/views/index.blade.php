@@ -2,6 +2,32 @@
 
 @section('content')
 
+    @if(session()->has('fail-delete-foto'))
+        
+    <div class="row justify-content-center fondo-principal" style="position:relative;">
+        <div class="alert alert-danger animated bounceInLeft m_enviado mt-3" role="alert">
+            <strong>Galería:</strong> {!! session('fail-delete-foto') !!}
+            <button type="button" class="ml-2 close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+    @endif
+
+    @if(session()->has('delete-foto'))
+    
+    <div class="row justify-content-center fondo-principal" style="position:relative;">
+        <div class="alert alert-success animated bounceInLeft m_enviado mt-3" role="alert">
+            <strong>Galería:</strong> {!! session('delete-foto') !!}
+            <button type="button" class="ml-2 close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+    @endif
+
     @if(session()->has('foto-update'))
   
     <div class="row justify-content-center fondo-principal" style="position:relative;">
@@ -104,7 +130,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Actividades -->
         <div class="container contenedor pb-3" id="actividades">
@@ -283,34 +308,43 @@
                     </div>
                 </div>
 
-                @foreach ($fotos as $i=>$foto)
-                <div class="row">
-                    <div class="col-12 col-md-4 mt-2">
-                        <div class="card shadow">
-                            <img class="card-img-top" src="{{url('img/Galeria/' . $foto->filename)}}" alt="">
-                            <div class="card-body text-white pie-pagina">
-                                <div class="d-flex justify-content-between align-items-center">
-                                <p class="card-text mt-3">{{$foto->descripcion}}</p>
-                                <button class="btn btn-light" data-toggle="modal" data-target="#modal-galeria{{$i}}"> Ver foto</button>
+            @foreach ($fotos as $i=>$foto)
+                <div class="col-12 col-md-4 mt-2">
+                    <div class="card shadow">
+                        <img class="card-img-top" src="{{url('img/Galeria/' . $foto->filename)}}" alt="">
+                        <div class="card-body text-white pie-pagina">
+                            <div class="d-flex justify-content-between align-items-center">
+                            <p class="card-text mt-3">{{$foto->descripcion}}</p>
+                            <button class="btn btn-light" data-toggle="modal" data-target="#modal-galeria-{{$i}}"> Ver foto</button>
+                            
+                            </div>
+                        </div>
+                        @auth
+                        <ul class="list-group list-group-flush fondo-principal">
+                            <li class="list-group-item fondo-principal">
+                                <div class="d-flex justify-content-end">
+                                <form action="{{route('delete-foto', $foto->foto_id)}}" method="POST">@csrf<button onclick="return confirm('¿Realmente desea borrar la imagen de la galería?');" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Borrar"><i class="fas fa-trash-alt"></i></button></form>
+                                </div>
+                            </li>
+                        </ul>    
+                        @endauth
+                    </div>
+                </div>
+        
+                <div class="modal fade" id="modal-galeria-{{$i}}" tabindex="-1" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <img class="w-100 h-100" src="{{url('img/Galeria/' . $foto->filename)}}" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
-        
-                <div class="modal fade" id="modal-galeria{{$i}}" tabindex="-1" role="dialog">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="container">
-                                        <div class="row">
-                                            <img class="w-100 h-100" src="{{url('img/Galeria/' . $foto->filename)}}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
                 @endforeach
 
 

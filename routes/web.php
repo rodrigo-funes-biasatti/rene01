@@ -26,6 +26,7 @@ Route::post('mensajes-del/{id}', 'MessageController@destroy')->name('delete_mess
 
 //Foto
 Route::post('nueva_foto', 'FotoController@create')->name('nueva-foto');
+Route::post('eliminar_foto/{id}', 'FotoController@delete')->name('delete-foto');
 
     
 
