@@ -2,6 +2,19 @@
 
 @section('content')
 
+    @if(session()->has('foto-update'))
+  
+    <div class="row justify-content-center fondo-principal" style="position:relative;">
+        <div class="alert alert-success animated bounceInLeft m_enviado mt-3" role="alert">
+            <strong>Galería:</strong> {!! session('foto-update') !!}
+            <button type="button" class="ml-2 close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+    @endif
+
     @if(session()->has('mensaje_creado'))
   
 
@@ -270,86 +283,36 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-4 mt-2">
-                    <div class="card shadow">
-                        <img class="card-img-top" src="{{url('img/Galeria/galeria2.jpg')}}" alt="">
-                        <div class="card-body text-white pie-pagina">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="card-text mt-3">Lorem ipsum dolor sit.</p>
-                                <button class="btn btn-light" data-toggle="modal" data-target="#modal-galeria2"> Ver foto</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="modal fade" id="modal-galeria2" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <img class="w-100 h-100" src="{{url('img/Galeria/galeria2.jpg')}}" alt="">
+                @foreach ($fotos as $i=>$foto)
+                <div class="row">
+                    <div class="col-12 col-md-4 mt-2">
+                        <div class="card shadow">
+                            <img class="card-img-top" src="{{url('img/Galeria/' . $foto->filename)}}" alt="">
+                            <div class="card-body text-white pie-pagina">
+                                <div class="d-flex justify-content-between align-items-center">
+                                <p class="card-text mt-3">{{$foto->descripcion}}</p>
+                                <button class="btn btn-light" data-toggle="modal" data-target="#modal-galeria{{$i}}"> Ver foto</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-md-4 mt-2">
-                    <div class="card shadow">
-                        <img class="card-img-top" src="{{url('img/Galeria/galeria3.jpg')}}" alt="">
-                        <div class="card-body text-white pie-pagina">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="card-text mt-3">Lorem ipsum dolor sit.</p>
-                                <button class="btn btn-light" data-toggle="modal" data-target="#modal-galeria3"> Ver foto</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
         
-                <div class="modal fade" id="modal-galeria3" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <img class="w-100 h-100" src="{{url('img/Galeria/galeria3.jpg')}}" alt="">
+                <div class="modal fade" id="modal-galeria{{$i}}" tabindex="-1" role="dialog">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <img class="w-100 h-100" src="{{url('img/Galeria/' . $foto->filename)}}" alt="">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                @endforeach
 
-                <div class="col-12 col-md-4 mt-2">
-                    <div class="card shadow">
-                        <img class="card-img-top" src="{{url('img/Galeria/galeria4.jpg')}}" alt="">
-                        <div class="card-body text-white pie-pagina">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="card-text mt-3">Lorem ipsum dolor sit.</p>
-                                <button class="btn btn-light" data-toggle="modal" data-target="#modal-galeria4"> Ver foto</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="modal fade" id="modal-galeria4" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <img class="w-100 h-100" src="{{url('img/Galeria/galeria4.jpg')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 @auth
                 <div class="col-12 col-md-4 mt-2 d-flex justify-content-center align-items-center">
